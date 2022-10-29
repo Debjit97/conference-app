@@ -14,11 +14,22 @@ public class HomeController {
 	@Value("${app.version}")
 	private String appVersion;
 	
+	@Value("${spring.datasource.url}")
+	private String dburl;
+	
 	@GetMapping
 	@RequestMapping("/")
 	public Map getStatus() {
 		Map map = new HashMap<String, String>();
 		map.put("app-version", appVersion);
+		return map;
+	}
+	
+	@GetMapping
+	@RequestMapping("/testdb")
+	public Map getDbUrl() {
+		Map map = new HashMap<String, String>();
+		map.put("Db-url", dburl);
 		return map;
 	}
 }
